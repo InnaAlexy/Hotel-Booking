@@ -1,0 +1,57 @@
+{
+	"users": [
+		{
+			"id": "001",
+			"login": "Inna",
+			"password": "12345Aa",
+			"registred_at": "2024-11-11",
+			"role_id": "0"
+		}
+	],
+	"roles": [
+		{
+			"id": 0,
+			"name": "Администратор"
+		},
+		{
+			"id": 1,
+			"name": "Модератор"
+		},
+		{
+			"id": 2,
+			"name": "Читатель"
+		}
+	],
+	"posts": [
+		{
+			"id": "001",
+			"title": "А-frame 2-х местный",
+			"img_url": "https://fastly.picsum.photos%2Fid%2F828%2F198%2F148.jpg%3Fhmac%3DcTuZ7exWhsVhxQkmmtlathC7-hGVRakRyh5mN1hyfc0&cc_key=",
+			"content": "Описание номера",
+			"max_capacity": 2
+		},
+		{
+			"id": "002",
+			"title": "А-frame 4-х местный",
+			"img_url": "https://fastly.picsum.photos%2Fid%2F828%2F198%2F148.jpg%3Fhmac%3DcTuZ7exWhsVhxQkmmtlathC7-hGVRakRyh5mN1hyfc0&cc_key=",
+			"content": "Описание номера",
+			"max_capacity": 4
+		},
+		{
+			"id": "003",
+			"title": "2-х этажный дом",
+			"img_url": "https://fastly.picsum.photos%2Fid%2F828%2F198%2F148.jpg%3Fhmac%3DcTuZ7exWhsVhxQkmmtlathC7-hGVRakRyh5mN1hyfc0&cc_key=",
+			"content": "Описание номера",
+			"max_capacity": 10
+		}
+	],
+	"boking": [
+		{
+			"id": "001",
+			"room_id": "003",
+			"user_id": "001",
+			"comments": "",
+			"status": "ожидает подтверждение"
+		}
+	]
+}
