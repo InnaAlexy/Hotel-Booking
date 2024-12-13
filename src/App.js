@@ -1,24 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Content = styled.div`
-	text-align: center;
-`;
-
-export const Header = () => {
-	return <div></div>;
-};
-
-export const Footer = () => {
-	return <div></div>;
-};
+import { Footer, Header, Icon } from './component';
+import styles from './App.module.css';
 
 function App() {
 	return (
-		<>
+		<div className={styles.appColomn}>
 			<Header />
-			<Content>
-				<h2> Заголовок </h2>
+			<div className={styles.content}>
+				<h2>
+					Заголовок <Icon id="fa-users" />
+				</h2>
 				<Routes>
 					<Route path="/" element={<div>Главная</div>}></Route>
 					<Route path="/login" element={<div>Вход</div>}></Route>
@@ -35,9 +26,9 @@ function App() {
 					></Route>
 					<Route path="*" element={<div>Ошибка</div>}></Route>
 				</Routes>
-			</Content>
+			</div>
 			<Footer />
-		</>
+		</div>
 	);
 }
 
