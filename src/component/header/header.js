@@ -1,23 +1,32 @@
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
 import styles from './header.module.css';
 import { Logo } from './logo/logo';
 
 export const Header = () => {
-	const onLogin = () => console.log('login');
-
-	const onRegistration = () => console.log('reg');
+	const navigate = useNavigate();
 	return (
 		<header className={styles.header}>
 			<div className={styles.hederContent}>
 				<Logo />
 				<div className={styles.registration}>
-					<Button onclick={onLogin}> Войти </Button>
-					<Button onclick={onRegistration}> Регистрация</Button>
-				</div>
-				<div>
-					<Icon id="fa-heart-o" />
-					<Icon id="fa-backward" />
+					<div>
+						<Link to="/login">
+							<Button> Войти </Button>
+						</Link>
+						<Link to="/register">
+							<Button> Регистрация</Button>
+						</Link>
+					</div>
+					<div>
+						<Link to="/myBooking">
+							<Icon id="fa-heart-o" />
+						</Link>
+						<div onClick={() => navigate(-1)}>
+							<Icon id="fa-backward" />
+						</div>
+					</div>
 				</div>
 			</div>
 		</header>
