@@ -13,4 +13,5 @@
 
 .button:hover {
 	background-position: right center;
+	cursor: pointer;
 }

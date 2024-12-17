@@ -10,7 +10,7 @@ export const Header = () => {
 		<header className={styles.header}>
 			<div className={styles.hederContent}>
 				<Logo />
-				<div className={styles.registration}>
+				<div>
 					<div>
 						<Link to="/login">
 							<Button> Войти </Button>
@@ -19,11 +19,11 @@ export const Header = () => {
 							<Button> Регистрация</Button>
 						</Link>
 					</div>
-					<div>
+					<div className={styles.icons}>
 						<Link to="/myBooking">
 							<Icon id="fa-heart-o" />
 						</Link>
-						<div onClick={() => navigate(-1)}>
+						<div onClick={() => navigate(-1)} className={styles.iconGoBack}>
 							<Icon id="fa-backward" />
 						</div>
 					</div>
