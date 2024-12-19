@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Logo } from '../header/logo/logo';
 import styles from './footer.module.css';
 
 export const Footer = () => {

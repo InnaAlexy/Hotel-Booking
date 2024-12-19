@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { Footer, Header, Icon } from './component';
+import { Footer, Header } from './component';
+import { Authorization } from './pages';
 import styles from './App.module.css';
 
 function App() {
@@ -7,12 +8,9 @@ function App() {
 		<div className={styles.appColomn}>
 			<Header />
 			<div className={styles.content}>
-				<h2>
-					Заголовок <Icon id="fa-users" />
-				</h2>
 				<Routes>
 					<Route path="/" element={<div>Главная</div>}></Route>
-					<Route path="/login" element={<div>Вход</div>}></Route>
+					<Route path="/login" element={<Authorization />}></Route>
 					<Route path="/register" element={<div>Регистрация</div>}></Route>
 					<Route
 						path="/reserves"

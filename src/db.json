@@ -6,6 +6,13 @@
 			"password": "12345Aa",
 			"registred_at": "2024-11-11",
 			"role_id": "0"
+		},
+		{
+			"id": "002",
+			"login": "user",
+			"password": "qwerty",
+			"registred_at": "2024-11-11",
+			"role_id": "0"
 		}
 	],
 	"roles": [

@@ -10,10 +10,15 @@ body {
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background: linear-gradient(#0b5e27, #37230df1);
+	background-image: url('https://bogatyr.club/uploads/posts/2023-03/1678923642_bogatyr-club-p-fon-dlya-otkritki-s-lesom-foni-oboi-4.jpg');
+	background-size: cover;
 	background-attachment: fixed;
 	font-family: 'Bellota', system-ui;
 	color: rgba(155, 172, 156, 0.925);
+}
+
+body a {
+	text-decoration: none;
 }
 
 html,

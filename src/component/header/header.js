@@ -1,32 +1,61 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
 import styles from './header.module.css';
 import { Logo } from './logo/logo';
+import { ROLE } from '../../constants';
+import { selectUserLogin, selectUserRole, selectUserSession } from '../../selectors';
+import { logout } from '../../actions';
 
 export const Header = () => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const roleId = useSelector(selectUserRole);
+	const login = useSelector(selectUserLogin);
+	const session = useSelector(selectUserSession);
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.hederContent}>
 				<Logo />
 				<div>
-					<div>
-						<Link to="/login">
-							<Button> Войти </Button>
-						</Link>
-						<Link to="/register">
-							<Button> Регистрация</Button>
-						</Link>
-					</div>
-					<div className={styles.icons}>
-						<Link to="/myBooking">
-							<Icon id="fa-heart-o" />
-						</Link>
-						<div onClick={() => navigate(-1)} className={styles.iconGoBack}>
-							<Icon id="fa-backward" />
-						</div>
-					</div>
+					{roleId === ROLE.VIEWER ? (
+						<>
+							<div className={styles.signInUpButtons}>
+								<Link to="/login">
+									<Button> Войти </Button>
+								</Link>
+								<Link to="/register">
+									<Button> Регистрация</Button>
+								</Link>
+							</div>
+						</>
+					) : (
+						<>
+							<div className={styles.userControlConteiner}>
+								<div
+									onClick={() => navigate(-1)}
+									className={styles.buttomIcon}
+								>
+									<Icon id="fa-backward" />
+								</div>
+								<Link to="/myBooking">
+									<Icon id="fa-heart-o" />
+								</Link>
+								<div>
+									<Icon id="fa-user-circle" />
+									{login}
+								</div>
+								<div
+									onClick={() => dispatch(logout(session))}
+									className={styles.buttomIcon}
+								>
+									<Icon id="fa-sign-out" />
+								</div>
+							</div>
+						</>
+					)}
 				</div>
 			</div>
 		</header>
