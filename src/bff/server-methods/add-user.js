@@ -1,7 +1,8 @@
+import { ROLE } from '../../constants';
 import { generateDate } from '../generate-date';
 
 export const addUser = (login, password) =>
-	fetch('http://localhost3007/users', {
+	fetch('http://localhost:3007/users', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
@@ -10,6 +11,6 @@ export const addUser = (login, password) =>
 			login,
 			password,
 			registred_at: generateDate(),
-			role_id: 2,
+			role_id: ROLE.GEST,
 		}),
-	});
+	}).then((createdUser) => createdUser.json());

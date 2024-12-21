@@ -1,18 +1,18 @@
+import styles from './registration.module.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import styles from './authorization.module.css';
 import { Button, ErrorFormMessage, Icon } from '../../component';
 import { server } from '../../bff/server';
 import { setUser } from '../../actions';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
-import { authFormSchema } from './auth-form-schema';
 import { useFormReset } from '../../hooks';
+import { regFormSchema } from './reg-form-schema';
 
-export const Authorization = () => {
+export const Registration = () => {
 	const {
 		register,
 		reset,
@@ -22,8 +22,9 @@ export const Authorization = () => {
 		defaultValue: {
 			login: '',
 			password: '',
+			passCheck: '',
 		},
-		resolver: yupResolver(authFormSchema),
+		resolver: yupResolver(regFormSchema),
 	});
 
 	const [serverError, setServerError] = useState('');
@@ -34,7 +35,7 @@ export const Authorization = () => {
 	useFormReset(reset);
 
 	const onSubmit = ({ login, password }) => {
-		server.authorize(login, password).then(({ error, res }) => {
+		server.register(login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
 				return;
@@ -44,7 +45,8 @@ export const Authorization = () => {
 		});
 	};
 
-	const formError = errors?.login?.message || errors?.password?.message;
+	const formError =
+		errors?.login?.message || errors?.password?.message || errors?.passCheck?.message;
 	const errorMessage = formError || serverError;
 
 	if (roleId !== ROLE.VIEWER) {
@@ -53,7 +55,7 @@ export const Authorization = () => {
 
 	return (
 		<div className={styles.conteiner}>
-			<h2> Авторизация </h2>
+			<h2> Регистрация </h2>
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.authoForm}>
 				<input
 					type="text"
@@ -65,10 +67,14 @@ export const Authorization = () => {
 					placeholder="Пароль..."
 					{...register('password', { onChange: () => setServerError(null) })}
 				/>
+				<input
+					type="password"
+					placeholder="Повторите пароль..."
+					{...register('passCheck', { onChange: () => setServerError(null) })}
+				/>
 				<Button disabled={!!formError} type="submit">
-					{!formError ? 'Войти' : <Icon id="fa-lock" />}
+					{!formError ? 'Готово' : <Icon id="fa-lock" />}
 				</Button>
-				<Link to="/register">У меня еще нет аккаунта...</Link>
 				{errorMessage && <ErrorFormMessage> {errorMessage} </ErrorFormMessage>}
 			</form>
 		</div>

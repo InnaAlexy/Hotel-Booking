@@ -13,15 +13,36 @@
 			"password": "qwerty",
 			"registred_at": "2024-11-11",
 			"role_id": "0"
+		},
+		{
+			"id": "4823",
+			"login": "login",
+			"password": "password",
+			"registred_at": "2059-07-27 07:25",
+			"role_id": 1
+		},
+		{
+			"id": "ac90",
+			"login": "nikita",
+			"password": "1234567",
+			"registred_at": "2042-10-07 12:52",
+			"role_id": 1
+		},
+		{
+			"id": "c5e3",
+			"login": "newUser",
+			"password": "12345678",
+			"registred_at": "2035-05-19 12:37",
+			"role_id": 1
 		}
 	],
 	"roles": [
 		{
-			"id": 0,
+			"id": "0",
 			"name": "Администратор"
 		},
 		{
-			"id": 2,
+			"id": "2",
 			"name": "Гость"
 		}
 	],

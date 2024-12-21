@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Footer, Header } from './component';
-import { Authorization } from './pages';
+import { Authorization, Registration } from './pages';
 import styles from './App.module.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<div>Главная</div>}></Route>
 					<Route path="/login" element={<Authorization />}></Route>
-					<Route path="/register" element={<div>Регистрация</div>}></Route>
+					<Route path="/register" element={<Registration />}></Route>
 					<Route
 						path="/reserves"
 						element={<div>Список бронирований</div>}
