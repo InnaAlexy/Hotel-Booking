@@ -1,3 +1,7 @@
+.substrate {
+	background-color: #000000a1;
+	min-height: 100%;
+}
 .appColomn {
 	display: flex;
 	flex-direction: column;
