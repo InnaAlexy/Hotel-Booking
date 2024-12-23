@@ -19,63 +19,82 @@
 			"login": "login",
 			"password": "password",
 			"registred_at": "2059-07-27 07:25",
-			"role_id": 1
-		},
-		{
-			"id": "ac90",
-			"login": "nikita",
-			"password": "1234567",
-			"registred_at": "2042-10-07 12:52",
-			"role_id": 1
-		},
-		{
-			"id": "c5e3",
-			"login": "newUser",
-			"password": "12345678",
-			"registred_at": "2035-05-19 12:37",
-			"role_id": 1
+			"role_id": "1"
 		}
 	],
 	"roles": [
 		{
 			"id": "0",
-			"name": "Администратор"
+			"name": "Admin"
+		},
+		{
+			"id": "1",
+			"name": "Guest"
 		},
 		{
 			"id": "2",
-			"name": "Гость"
+			"name": "Viewer"
 		}
 	],
-	"posts": [
+	"rooms": [
 		{
 			"id": "001",
 			"title": "А-frame 2-х местный",
 			"img_url": "https://fastly.picsum.photos%2Fid%2F828%2F198%2F148.jpg%3Fhmac%3DcTuZ7exWhsVhxQkmmtlathC7-hGVRakRyh5mN1hyfc0&cc_key=",
 			"content": "Описание номера",
-			"max_capacity": 2
+			"max_capacity": "2"
 		},
 		{
 			"id": "002",
 			"title": "А-frame 4-х местный",
 			"img_url": "https://fastly.picsum.photos%2Fid%2F828%2F198%2F148.jpg%3Fhmac%3DcTuZ7exWhsVhxQkmmtlathC7-hGVRakRyh5mN1hyfc0&cc_key=",
 			"content": "Описание номера",
-			"max_capacity": 4
+			"max_capacity": "4"
 		},
 		{
 			"id": "003",
 			"title": "2-х этажный дом",
 			"img_url": "https://fastly.picsum.photos%2Fid%2F828%2F198%2F148.jpg%3Fhmac%3DcTuZ7exWhsVhxQkmmtlathC7-hGVRakRyh5mN1hyfc0&cc_key=",
 			"content": "Описание номера",
-			"max_capacity": 10
+			"max_capacity": "10"
 		}
 	],
-	"boking": [
+	"bookings": [
 		{
 			"id": "001",
+			"title": "2-х этажный дом",
 			"room_id": "003",
 			"user_id": "001",
-			"comments": "",
-			"status": "ожидает подтверждение"
+			"user_login": "inna",
+			"day_start": "2000-11-05",
+			"day_end": " 2000-11-07",
+			"date": ["2000-11-05", "2000-11-06", "2000-11-07"],
+			"status_id": "ожидает подтверждение"
+		},
+		{
+			"id": "002",
+			"title": "4-х этажный дом",
+			"room_id": "003",
+			"user_id": "002",
+			"user_login": "ivan",
+			"day_start": "2000-11-05",
+			"day_end": " 2000-11-07",
+			"date": ["2000-11-05", "2000-11-06", "2000-11-07"],
+			"status_id": "ожидает подтверждение"
+		}
+	],
+	"statuses": [
+		{
+			"id": 0,
+			"name": "ожидает подтверждение"
+		},
+		{
+			"id": 1,
+			"name": "Подтверждено"
+		},
+		{
+			"id": 2,
+			"name": "Отменено"
 		}
 	]
 }

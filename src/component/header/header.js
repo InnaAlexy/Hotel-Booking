@@ -43,6 +43,9 @@ export const Header = () => {
 								<Link to="/myBooking">
 									<Icon id="fa-heart-o" />
 								</Link>
+								<Link to="/bookings">
+									<Icon id="fa-list-ol" />
+								</Link>
 								<div>
 									<Icon id="fa-user-circle" />
 									{login}
