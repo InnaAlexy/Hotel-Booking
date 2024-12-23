@@ -1,6 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { Footer, Header } from './component';
-import { Authorization, Bookings, Error404, Registration, UserBookings } from './pages';
+import {
+	AboutUs,
+	Authorization,
+	Bookings,
+	Error404,
+	Registration,
+	UserBookings,
+} from './pages';
 import styles from './App.module.css';
 
 function App() {
@@ -10,6 +17,7 @@ function App() {
 			<div className={styles.content}>
 				<Routes>
 					<Route path="/" element={<div>Главная</div>}></Route>
+					<Route path="/aboutUs" element={<AboutUs />}></Route>
 					<Route path="/login" element={<Authorization />}></Route>
 					<Route path="/register" element={<Registration />}></Route>
 					<Route path="/bookings" element={<Bookings />}></Route>
