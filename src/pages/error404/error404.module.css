@@ -1,0 +1,28 @@
+.conteiner {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+	padding-top: 30px;
+	font-size: 25px;
+	color: #103943;
+}
+
+h1 {
+	font-size: 150px;
+	margin: 0;
+	text-shadow: 5px 5px #89917f;
+}
+
+.errorMessage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.errorMessage a {
+	font-weight: 600;
+	color: #103943;
+	text-decoration-line: underline;
+	text-decoration-color: rgb(109, 106, 101);
+}

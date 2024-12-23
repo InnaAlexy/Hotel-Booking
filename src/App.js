@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Footer, Header } from './component';
-import { Authorization, Bookings, Registration, UserBookings } from './pages';
+import { Authorization, Bookings, Error404, Registration, UserBookings } from './pages';
 import styles from './App.module.css';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
 					<Route path="/rooms" element={<div>Выбор номеров</div>}></Route>
 					<Route path="/room/:roomId" element={<div>Номер</div>}></Route>
 					<Route path="/myBooking" element={<UserBookings />}></Route>
-					<Route path="*" element={<div>Ошибка</div>}></Route>
+					<Route path="*" element={<Error404 />}></Route>
 				</Routes>
 			</div>
 			<Footer />
