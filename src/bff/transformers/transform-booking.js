@@ -7,5 +7,5 @@ export const transformBooking = (dbBooking) => ({
 	dayStart: dbBooking.day_start,
 	dayEnd: dbBooking.day_end,
 	date: dbBooking.date,
-	statusId: dbBooking.status_id,
+	status: dbBooking.status,
 });

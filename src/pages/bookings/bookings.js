@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useServerRequest } from '../../hooks';
 import styles from './bookings.module.css';
-import { TableRow } from './components/table-row';
+import { TableRow } from './components';
 
 export const Bookings = () => {
 	const [bookings, setBookings] = useState([]);
@@ -42,7 +42,7 @@ export const Bookings = () => {
 							<div className={styles.statusColumn}>Статус бронирования</div>
 						</div>
 						{bookings.map(
-							({ id, title, userLogin, dayStart, dayEnd, statusId }) => (
+							({ id, title, userLogin, dayStart, dayEnd, status }) => (
 								<TableRow
 									key={id}
 									id={id}
@@ -50,7 +50,7 @@ export const Bookings = () => {
 									userLogin={userLogin}
 									dayStart={dayStart}
 									dayEnd={dayEnd}
-									statusId={statusId}
+									status={status}
 									statuses={statuses}
 								/>
 							),

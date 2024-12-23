@@ -8,7 +8,7 @@ export const TableRow = ({
 	userLogin,
 	dayStart,
 	dayEnd,
-	statusId,
+	status,
 	statuses,
 }) => {
 	const onStatusChange = () => {};
@@ -20,7 +20,7 @@ export const TableRow = ({
 			<div className={styles.dateStartColumn}>{dayStart}</div>
 			<div className={styles.dateEndColumn}>{dayEnd}</div>
 			<div className={styles.statusColumn}>
-				<select value={statusId} onChange={onStatusChange}>
+				<select value={status} onChange={onStatusChange}>
 					{statuses.map(({ id, name: statusName }) => (
 						<option key={id} value={statusName}>
 							{statusName}
