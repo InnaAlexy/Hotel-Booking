@@ -5,6 +5,8 @@ import {
 	fetchBookings,
 	fetchStatuses,
 	fetchUserBookings,
+	updateBookingStatus,
+	removeBooking,
 } from './operations';
 
 export const server = {
@@ -14,4 +16,6 @@ export const server = {
 	fetchBookings,
 	fetchStatuses,
 	fetchUserBookings,
+	updateBookingStatus,
+	removeBooking,
 };

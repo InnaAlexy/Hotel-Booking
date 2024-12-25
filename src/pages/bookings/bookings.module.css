@@ -1,6 +1,6 @@
 .conteiner {
 	display: flex;
-	width: 780px;
+	width: 882px;
 	margin: auto;
 	align-items: center;
 	flex-direction: column;
@@ -30,6 +30,7 @@
 
 .titleRow :last-child {
 	padding: 10px 0;
+	width: 320px;
 }
 
 .tableRow div {
@@ -40,6 +41,10 @@
 
 .tableRow :last-child {
 	border: none;
+}
+
+.tableRow :last-child div {
+	margin: 5px;
 }
 
 .loginColumn {
@@ -63,7 +68,7 @@
 }
 
 .statusColumn {
-	width: 230px;
+	width: 235px;
 }
 
 select {
@@ -71,10 +76,15 @@ select {
 	letter-spacing: inherit;
 	word-spacing: inherit;
 	height: 43px;
-	width: 230px;
+	width: 235px;
 	background-color: #ffffff41;
 }
 
-option {
-	background-color: #00000060;
+.disable {
+	width: 50px;
+	border-radius: 4px;
+}
+
+.iconRow button {
+	margin: 5px;
 }

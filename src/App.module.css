@@ -1,4 +1,5 @@
 .substrate {
+	display: flex;
 	background-color: #000000a1;
 	min-height: 100%;
 }

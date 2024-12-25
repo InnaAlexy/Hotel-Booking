@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useServerRequest } from '../../hooks';
 import styles from './bookings.module.css';
-import { TableRow } from './components';
+import { TableRow, TitleRow } from './components';
 
 export const Bookings = () => {
 	const [bookings, setBookings] = useState([]);
 	const [statuses, setStatuses] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
+	const [shouldUpdateList, setShouldUpdateList] = useState(false);
 
 	const requestServer = useServerRequest();
 
@@ -24,7 +25,13 @@ export const Bookings = () => {
 			setBookings(bookingsRes.res);
 			setStatuses(statusesRes.res);
 		});
-	}, [requestServer]);
+	}, [requestServer, shouldUpdateList]);
+
+	const onBookingRemove = (idOfBooking) => {
+		requestServer('removeBooking', idOfBooking).then(() => {
+			setShouldUpdateList(!shouldUpdateList);
+		});
+	};
 
 	return (
 		<div className={styles.conteiner}>
@@ -34,24 +41,28 @@ export const Bookings = () => {
 					<div>{errorMessage} </div>
 				) : (
 					<>
-						<div className={styles.titleRow}>
-							<div className={styles.loginColumn}>Имя гостя</div>
-							<div className={styles.titleColumn}>Номер</div>
-							<div className={styles.dateStartColumn}>Заезд</div>
-							<div className={styles.dateEndColumn}>Выезд</div>
-							<div className={styles.statusColumn}>Статус бронирования</div>
-						</div>
+						<TitleRow />
 						{bookings.map(
-							({ id, title, userLogin, dayStart, dayEnd, status }) => (
+							({
+								id,
+								title,
+								userLogin,
+								dayStart,
+								dayEnd,
+								statusId,
+								roomId,
+							}) => (
 								<TableRow
 									key={id}
 									id={id}
+									roomId={roomId}
 									title={title}
 									userLogin={userLogin}
 									dayStart={dayStart}
 									dayEnd={dayEnd}
-									status={status}
+									statusId={statusId}
 									statuses={statuses}
+									onBookingRemove={() => onBookingRemove(id)}
 								/>
 							),
 						)}
