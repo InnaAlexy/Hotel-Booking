@@ -14,8 +14,6 @@ export const fetchUserBookings = async (userSession, loginToFind) => {
 
 	const userBookings = await getUserBookings(loginToFind);
 
-	console.log(userBookings);
-
 	if (!!userBookings.res) {
 		return {
 			error: 'У вас еще нет бронирований!',

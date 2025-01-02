@@ -5,13 +5,13 @@
 	margin: auto;
 	padding-top: 30px;
 	font-size: 25px;
-	color: #103943;
+	color: #51656a;
 }
 
 h1 {
 	font-size: 150px;
 	margin: 0;
-	text-shadow: 5px 5px #89917f;
+	text-shadow: 5px 5px #3c3d3b;
 }
 
 .errorMessage {
@@ -22,7 +22,7 @@ h1 {
 
 .errorMessage a {
 	font-weight: 600;
-	color: #103943;
+	color: #16505f;
 	text-decoration-line: underline;
 	text-decoration-color: rgb(109, 106, 101);
 }

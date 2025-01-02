@@ -7,6 +7,7 @@ import {
 	Error404,
 	Main,
 	Registration,
+	Room,
 	UserBookings,
 } from './pages';
 import styles from './App.module.css';
@@ -24,8 +25,12 @@ function App() {
 						<Route path="/register" element={<Registration />}></Route>
 						<Route path="/bookings" element={<Bookings />}></Route>
 						<Route path="/rooms" element={<div>Выбор номеров</div>}></Route>
-						<Route path="/room/:roomId" element={<div>Номер</div>}></Route>
+						<Route path="/rooms/:roomId" element={<Room />}></Route>
 						<Route path="/myBooking" element={<UserBookings />}></Route>
+						<Route
+							path="/bookingPage"
+							element={<div>cтр бронирования</div>}
+						></Route>
 						<Route path="*" element={<Error404 />}></Route>
 					</Routes>
 				</div>

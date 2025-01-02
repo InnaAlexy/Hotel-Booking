@@ -6,3 +6,5 @@ export * from './get-statuses';
 export * from './get-user-booking';
 export * from './set-booking-status';
 export * from './delete-booking';
+export * from './get-room';
+export * from './get-room-bookings';

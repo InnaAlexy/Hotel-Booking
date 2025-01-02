@@ -1,12 +1,21 @@
+import { ACTION_TYPE } from '../actions';
+
 const initialRoomState = {
-	// id: null,
-	// login: null,
-	// roleId: ,
-	// session: null,
+	id: '',
+	title: '',
+	imgUrl: '',
+	content: '',
+	maxCapacity: '',
+	bookings: [],
 };
 
 export const roomReducer = (state = initialRoomState, action) => {
 	switch (action.type) {
+		case ACTION_TYPE.SET_ROOM_DATA:
+			return {
+				...state,
+				...action.payload,
+			};
 		default:
 			return state;
 	}
