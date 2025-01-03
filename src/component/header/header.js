@@ -14,6 +14,14 @@ export const Header = () => {
 	const roleId = useSelector(selectUserRole);
 	const login = useSelector(selectUserLogin);
 	const session = useSelector(selectUserSession);
+	// const user = useSelector(selectUser)
+
+	console.log(roleId);
+
+	const onLogout = () => {
+		dispatch(logout(session));
+		sessionStorage.removeItem('userData');
+	};
 
 	return (
 		<header className={styles.header}>
@@ -50,10 +58,7 @@ export const Header = () => {
 									<Icon id="fa-user-circle" />
 									{login}
 								</div>
-								<div
-									onClick={() => dispatch(logout(session))}
-									className={styles.buttomIcon}
-								>
+								<div onClick={onLogout} className={styles.buttomIcon}>
 									<Icon id="fa-sign-out" />
 								</div>
 							</div>

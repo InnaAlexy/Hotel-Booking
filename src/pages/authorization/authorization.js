@@ -31,6 +31,8 @@ export const Authorization = () => {
 	const dispatch = useDispatch();
 	const roleId = useSelector(selectUserRole);
 
+	console.log('roleId autorize', roleId);
+
 	useFormReset(reset);
 
 	const onSubmit = ({ login, password }) => {
@@ -41,6 +43,7 @@ export const Authorization = () => {
 			}
 
 			dispatch(setUser(res));
+			sessionStorage.setItem('userData', JSON.stringify(res));
 		});
 	};
 

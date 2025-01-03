@@ -11,8 +11,25 @@ import {
 	UserBookings,
 } from './pages';
 import styles from './App.module.css';
+import { useDispatch } from 'react-redux';
+import { useLayoutEffect } from 'react';
+import { setUser } from './actions';
 
 function App() {
+	const dispatch = useDispatch();
+
+	useLayoutEffect(() => {
+		const currentUserDataJSON = sessionStorage.getItem('userData');
+
+		if (!currentUserDataJSON) {
+			return;
+		}
+
+		const currentUserData = JSON.parse(currentUserDataJSON);
+
+		dispatch(setUser(currentUserData));
+	}, [dispatch]);
+
 	return (
 		<div className={styles.substrate}>
 			<div className={styles.appColomn}>

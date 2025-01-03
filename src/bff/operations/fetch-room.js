@@ -5,7 +5,8 @@ import { getBookings, getRoom } from '../api';
 export const fetchRoom = async (roomId) => {
 	// const accessRoles = [ROLE.VIEWER];
 
-	// if (sessions.access(userSession, accessRoles)) {
+	// const access = await sessions.access(hash, accessRoles);
+	// if (!access) {
 	// 	return {
 	// 		error: 'Доступ запрещен',
 	// 		res: null,

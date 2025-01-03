@@ -2,10 +2,11 @@ import { setBookingStatus } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
-export const updateBookingStatus = async (userSession, bookingId, newStatusId) => {
+export const updateBookingStatus = async (hash, bookingId, newStatusId) => {
 	const accessRoles = [ROLE.ADMIN];
 
-	if (!sessions.access(userSession, accessRoles)) {
+	const access = await sessions.access(hash, accessRoles);
+	if (!access) {
 		return {
 			error: 'Доступ запрещен',
 			res: null,

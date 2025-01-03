@@ -3,6 +3,7 @@ import { sessions } from '../sessions';
 
 export const authorize = async (authLogin, authPassword) => {
 	const user = await getUser(authLogin);
+	console.log(user, 'user');
 
 	if (!user) {
 		return {
@@ -23,7 +24,7 @@ export const authorize = async (authLogin, authPassword) => {
 		res: {
 			id: user.id,
 			login: user.login,
-			roleId: user.role_id,
+			roleId: user.roleId,
 			session: sessions.create(user),
 		},
 	};

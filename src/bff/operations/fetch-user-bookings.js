@@ -2,10 +2,11 @@ import { getUserBookings } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
-export const fetchUserBookings = async (userSession, loginToFind) => {
+export const fetchUserBookings = async (hash, loginToFind) => {
 	const accessRoles = [ROLE.GEST];
 
-	if (!sessions.access(userSession, accessRoles)) {
+	const access = await sessions.access(hash, accessRoles);
+	if (!access) {
 		return {
 			error: 'Доступ запрещен',
 			res: null,

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Icon } from '../../../../component';
 import styles from './booking-block.module.css';
 import { useServerRequest } from '../../../../hooks';
+import { Confirm } from './components';
 
 export const BookingBlock = ({ actualRoomId }) => {
 	const [startDay, setStartDay] = useState('');
@@ -55,6 +56,7 @@ export const BookingBlock = ({ actualRoomId }) => {
 							Дата заезда:{' '}
 							<input
 								type="date"
+								name="startDay"
 								min={new Date().toISOString().slice(0, 10)}
 								max={endDay}
 								onChange={onStartDayChange}
@@ -64,6 +66,7 @@ export const BookingBlock = ({ actualRoomId }) => {
 							Дата выезда:{' '}
 							<input
 								type="date"
+								name="endDay"
 								min={
 									startDay
 										? startDay
@@ -98,17 +101,7 @@ export const BookingBlock = ({ actualRoomId }) => {
 						</div>
 					</div>
 				) : toutched && !isDateBusy ? (
-					<div className={styles.confirmConteiner}>
-						<div className={styles.confirm}>
-							<div className={styles.closeButton}>
-								<Icon id="fa-window-close-o" onClick={onClose} />
-							</div>
-							<div className={styles.confirmMessage}>
-								Выбранные вами даты свободны, желаете забронировать?
-							</div>
-							<Button>Подтвердить</Button>
-						</div>
-					</div>
+					<Confirm setToutched={setToutched} />
 				) : (
 					<div></div>
 				)}
