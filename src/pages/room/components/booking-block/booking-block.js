@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Button, Icon } from '../../../../component';
+import { Button } from '../../../../component';
 import styles from './booking-block.module.css';
 import { useServerRequest } from '../../../../hooks';
-import { Confirm } from './components';
+import { Confirm, Error } from './components';
+import { actualDateToday, dateAfterDate } from '../../../../utils';
 
 export const BookingBlock = ({ actualRoomId }) => {
 	const [startDay, setStartDay] = useState('');
@@ -57,7 +58,7 @@ export const BookingBlock = ({ actualRoomId }) => {
 							<input
 								type="date"
 								name="startDay"
-								min={new Date().toISOString().slice(0, 10)}
+								min={actualDateToday()}
 								max={endDay}
 								onChange={onStartDayChange}
 							/>
@@ -69,8 +70,8 @@ export const BookingBlock = ({ actualRoomId }) => {
 								name="endDay"
 								min={
 									startDay
-										? startDay
-										: new Date().toISOString().slice(0, 10)
+										? dateAfterDate(startDay)
+										: dateAfterDate(actualDateToday())
 								}
 								onChange={onEndDayChange}
 							/>
@@ -89,19 +90,9 @@ export const BookingBlock = ({ actualRoomId }) => {
 					)}
 				</div>
 				{toutched && isDateBusy ? (
-					<div className={styles.confirmConteiner}>
-						<div className={styles.confirm}>
-							<div className={styles.closeButton}>
-								<Icon id="fa-window-close-o" onClick={onClose} />
-							</div>
-							<div className={styles.confirmMessage}>
-								К сожалению выбранные вами даты заняты, выберете другие
-								даты или свяжитесь с нами!
-							</div>
-						</div>
-					</div>
+					<Error onClose={onClose} />
 				) : toutched && !isDateBusy ? (
-					<Confirm setToutched={setToutched} />
+					<Confirm onClose={onClose} desiredDates={desiredDates} />
 				) : (
 					<div></div>
 				)}

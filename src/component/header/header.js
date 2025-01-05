@@ -14,9 +14,6 @@ export const Header = () => {
 	const roleId = useSelector(selectUserRole);
 	const login = useSelector(selectUserLogin);
 	const session = useSelector(selectUserSession);
-	// const user = useSelector(selectUser)
-
-	console.log(roleId);
 
 	const onLogout = () => {
 		dispatch(logout(session));

@@ -9,6 +9,7 @@ import {
 	removeBooking,
 	fetchRoom,
 	fetchActualRoomBookings,
+	booking,
 } from './operations';
 
 export const server = {
@@ -22,4 +23,5 @@ export const server = {
 	removeBooking,
 	fetchRoom,
 	fetchActualRoomBookings,
+	booking,
 };

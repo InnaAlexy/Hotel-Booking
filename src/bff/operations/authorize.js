@@ -3,7 +3,6 @@ import { sessions } from '../sessions';
 
 export const authorize = async (authLogin, authPassword) => {
 	const user = await getUser(authLogin);
-	console.log(user, 'user');
 
 	if (!user) {
 		return {

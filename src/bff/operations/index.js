@@ -8,3 +8,4 @@ export * from './update-booking-status';
 export * from './remove-booking';
 export * from './fetch-room';
 export * from './fetch-actual-room-bookings';
+export * from './booking';

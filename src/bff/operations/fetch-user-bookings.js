@@ -3,7 +3,7 @@ import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
 export const fetchUserBookings = async (hash, loginToFind) => {
-	const accessRoles = [ROLE.GEST];
+	const accessRoles = [ROLE.GEST, ROLE.ADMIN];
 
 	const access = await sessions.access(hash, accessRoles);
 	if (!access) {

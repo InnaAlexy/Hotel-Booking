@@ -8,16 +8,17 @@ export const TableRow = ({
 	title,
 	roomId,
 	userLogin,
-	dayStart,
-	dayEnd,
 	statusId,
 	statuses,
 	onBookingRemove,
+	date,
 }) => {
 	const [actualStatusId, setActualStatusId] = useState(statusId);
 	const [selectedStatusId, setSelectedStatusId] = useState(statusId);
 	const [titleContent, setTitleContent] = useState(false);
 	const requestServer = useServerRequest();
+	const dayStart = date[0];
+	const dayEnd = date[date.length - 1];
 
 	const onStatusChange = ({ target }) => {
 		setSelectedStatusId(target.value);

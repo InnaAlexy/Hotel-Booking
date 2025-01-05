@@ -1,4 +1,4 @@
-.confirmConteiner {
+.errorConteiner {
 	display: flex;
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.827);
@@ -13,7 +13,7 @@
 	z-index: 10;
 }
 
-.confirm {
+.error {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -40,9 +40,9 @@
 	cursor: pointer;
 }
 
-.confirmMessage {
+.errorMessage {
 	display: flex;
 	text-align: center;
-	padding: 10px 0 23px 0;
+	padding: 10px 7px 23px 7px;
 	font-size: 18px;
 }
