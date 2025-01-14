@@ -4,4 +4,5 @@ export const transformRoom = (dbRoom) => ({
 	imgUrl: dbRoom.img_url,
 	content: dbRoom.content,
 	maxCapacity: dbRoom.max_capacity,
+	price: dbRoom.price,
 });

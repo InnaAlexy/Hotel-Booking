@@ -1,6 +1,6 @@
 import { transformBooking } from '../transformers';
 
-export const getUserBookings = (loginToFind) =>
-	fetch(`http://localhost:3007/bookings?user_login=${loginToFind}`)
+export const getUserBookings = (userId) =>
+	fetch(`http://localhost:3007/bookings?user_id=${userId}`)
 		.then((loadedBookings) => loadedBookings.json())
 		.then((loadedBookings) => loadedBookings && loadedBookings.map(transformBooking));

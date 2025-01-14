@@ -9,6 +9,7 @@ import {
 	Registration,
 	Room,
 	UserBookings,
+	Rooms,
 } from './pages';
 import styles from './App.module.css';
 import { useDispatch } from 'react-redux';
@@ -41,7 +42,7 @@ function App() {
 						<Route path="/login" element={<Authorization />}></Route>
 						<Route path="/register" element={<Registration />}></Route>
 						<Route path="/bookings" element={<Bookings />}></Route>
-						<Route path="/rooms" element={<div>Выбор номеров</div>}></Route>
+						<Route path="/rooms" element={<Rooms />}></Route>
 						<Route path="/rooms/:roomId" element={<Room />}></Route>
 						<Route path="/myBooking" element={<UserBookings />}></Route>
 						<Route

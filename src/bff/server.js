@@ -10,6 +10,7 @@ import {
 	fetchRoom,
 	fetchActualRoomBookings,
 	booking,
+	fetchRooms,
 } from './operations';
 
 export const server = {
@@ -24,4 +25,5 @@ export const server = {
 	fetchRoom,
 	fetchActualRoomBookings,
 	booking,
+	fetchRooms,
 };

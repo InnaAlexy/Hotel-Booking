@@ -1,6 +1,6 @@
 .conteiner {
 	display: flex;
-	width: 882px;
+	width: 942px;
 	margin: auto;
 	align-items: center;
 	flex-direction: column;
@@ -53,7 +53,7 @@
 }
 
 .titleColumn {
-	width: 170px;
+	width: 230px;
 	padding: 10px 0;
 }
 

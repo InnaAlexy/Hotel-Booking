@@ -18,7 +18,13 @@ export const RoomInfo = ({ room }) => {
 					<Icon id="fa-users" />
 					{`max:${maxCapacity}`}
 				</div>
-				<div className={styles.content}>{content}</div>
+
+				<div>{content}</div>
+				<br />
+				<div>
+					Хотите отдохнуть в нашем отеле? Проверьте, есть ли свободный номер на
+					нужные вам даты!
+				</div>
 			</div>
 		</div>
 	);

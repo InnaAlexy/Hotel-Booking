@@ -1,6 +1,6 @@
 .conteiner {
 	display: flex;
-	width: 640px;
+	width: 733px;
 	margin: auto;
 	align-items: center;
 	flex-direction: column;
@@ -46,7 +46,7 @@
 }
 
 .titleColumn {
-	width: 170px;
+	width: 232px;
 }
 
 .dateStartColumn {
@@ -59,4 +59,9 @@
 
 .statusColumn {
 	width: 230px;
+}
+
+button {
+	align-items: center;
+	margin: 0 5px 0 5px;
 }

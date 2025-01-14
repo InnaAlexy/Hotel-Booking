@@ -12,6 +12,6 @@ export const addBooking = (room, userId, userLogin, desiredDates) =>
 			user_id: userId,
 			user_login: userLogin,
 			date: desiredDates,
-			status_id: STATUS.WAITING,
+			status: STATUS.WAITING,
 		}),
 	}).then((createdBooking) => createdBooking.json());

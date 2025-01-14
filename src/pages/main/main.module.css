@@ -1,6 +1,6 @@
 .conteiner {
 	background-color: rgba(13, 14, 13, 0.723);
-	height: 590px;
+	min-height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;

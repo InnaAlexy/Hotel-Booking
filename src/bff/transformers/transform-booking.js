@@ -5,5 +5,5 @@ export const transformBooking = (dbBooking) => ({
 	userId: dbBooking.user_id,
 	userLogin: dbBooking.user_login,
 	date: dbBooking.date,
-	statusId: dbBooking.status_id,
+	status: dbBooking.status,
 });

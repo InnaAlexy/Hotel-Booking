@@ -2,7 +2,7 @@ import { getUserBookings } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
-export const fetchUserBookings = async (hash, loginToFind) => {
+export const fetchUserBookings = async (hash, userId) => {
 	const accessRoles = [ROLE.GEST, ROLE.ADMIN];
 
 	const access = await sessions.access(hash, accessRoles);
@@ -13,14 +13,7 @@ export const fetchUserBookings = async (hash, loginToFind) => {
 		};
 	}
 
-	const userBookings = await getUserBookings(loginToFind);
-
-	if (!!userBookings.res) {
-		return {
-			error: 'У вас еще нет бронирований!',
-			res: null,
-		};
-	}
+	const userBookings = await getUserBookings(userId);
 
 	return {
 		error: null,

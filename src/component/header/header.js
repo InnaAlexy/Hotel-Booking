@@ -51,10 +51,9 @@ export const Header = () => {
 								<Link to="/bookings">
 									<Icon id="fa-list-ol" />
 								</Link>
-								<div>
-									<Icon id="fa-user-circle" />
-									{login}
-								</div>
+
+								<Icon id="fa-user-circle" />
+								<div className={styles.login}>{login}</div>
 								<div onClick={onLogout} className={styles.buttomIcon}>
 									<Icon id="fa-sign-out" />
 								</div>

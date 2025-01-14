@@ -8,29 +8,29 @@ export const TableRow = ({
 	title,
 	roomId,
 	userLogin,
-	statusId,
+	status,
 	statuses,
 	onBookingRemove,
 	date,
 }) => {
-	const [actualStatusId, setActualStatusId] = useState(statusId);
-	const [selectedStatusId, setSelectedStatusId] = useState(statusId);
+	const [actualStatus, setActualStatus] = useState(status);
+	const [selectedStatus, setSelectedStatus] = useState(status);
 	const [titleContent, setTitleContent] = useState(false);
 	const requestServer = useServerRequest();
 	const dayStart = date[0];
 	const dayEnd = date[date.length - 1];
 
 	const onStatusChange = ({ target }) => {
-		setSelectedStatusId(target.value);
+		setSelectedStatus(target.value);
 	};
 
 	const onStatusSave = (idOfBooking, newIdOfStatus) => {
 		requestServer('updateBookingStatus', idOfBooking, newIdOfStatus).then(() =>
-			setActualStatusId(newIdOfStatus),
+			setActualStatus(newIdOfStatus),
 		);
 	};
 
-	const isSaveButtonDisabled = selectedStatusId === actualStatusId;
+	const isSaveButtonDisabled = selectedStatus === actualStatus;
 
 	return (
 		<div className={styles.tableRow}>
@@ -45,7 +45,7 @@ export const TableRow = ({
 			<div className={styles.dateStartColumn}>{dayStart}</div>
 			<div className={styles.dateEndColumn}>{dayEnd}</div>
 			<div className={styles.statusColumn}>
-				<select value={selectedStatusId} onChange={onStatusChange}>
+				<select value={selectedStatus} onChange={onStatusChange}>
 					{statuses.map(({ id: idS, name }) => (
 						<option key={idS} value={idS}>
 							{name}
@@ -59,7 +59,7 @@ export const TableRow = ({
 						<Icon id="fa-check" />
 					</div>
 				) : (
-					<Button onclick={() => onStatusSave(id, selectedStatusId)}>
+					<Button onclick={() => onStatusSave(id, selectedStatus)}>
 						<Icon id="fa-check" />
 					</Button>
 				)}

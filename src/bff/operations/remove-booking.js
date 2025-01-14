@@ -3,7 +3,7 @@ import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
 export const removeBooking = async (hash, idOfBooking) => {
-	const accessRoles = [ROLE.ADMIN];
+	const accessRoles = [ROLE.ADMIN, ROLE.GEST];
 
 	const access = await sessions.access(hash, accessRoles);
 	if (!access) {

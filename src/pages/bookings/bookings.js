@@ -43,14 +43,14 @@ export const Bookings = () => {
 					<>
 						<TitleRow />
 						{bookings.map(
-							({ id, title, userLogin, statusId, roomId, date }) => (
+							({ id, title, userLogin, status, roomId, date }) => (
 								<TableRow
 									key={id}
 									id={id}
 									roomId={roomId}
 									title={title}
 									userLogin={userLogin}
-									statusId={statusId}
+									status={status}
 									statuses={statuses}
 									onBookingRemove={() => onBookingRemove(id)}
 									date={date}

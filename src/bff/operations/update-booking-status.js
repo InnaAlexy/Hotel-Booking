@@ -2,7 +2,7 @@ import { setBookingStatus } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
-export const updateBookingStatus = async (hash, bookingId, newStatusId) => {
+export const updateBookingStatus = async (hash, bookingId, newStatus) => {
 	const accessRoles = [ROLE.ADMIN];
 
 	const access = await sessions.access(hash, accessRoles);
@@ -13,7 +13,7 @@ export const updateBookingStatus = async (hash, bookingId, newStatusId) => {
 		};
 	}
 
-	setBookingStatus(bookingId, newStatusId);
+	setBookingStatus(bookingId, newStatus);
 
 	return {
 		error: null,

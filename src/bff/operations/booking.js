@@ -30,7 +30,7 @@ export const booking = async (hash, room, userId, userLogin, desiredDates) => {
 			userId: newBooking.user_id,
 			userLogin: newBooking.user_login,
 			date: newBooking.date,
-			statusId: newBooking.status_id,
+			status: newBooking.status,
 		},
 	};
 };

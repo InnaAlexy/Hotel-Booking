@@ -1,5 +1,5 @@
 export const STATUS = {
-	WAITING: 'Ожидает подтверждения',
-	CONFIRMED: 'Подтверждено',
-	CANCELED: 'Отменено',
+	WAITING: '0',
+	CONFIRMED: '1',
+	CANCELED: '2',
 };

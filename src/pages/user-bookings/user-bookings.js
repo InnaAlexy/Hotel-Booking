@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectUserLogin } from '../../selectors';
+import { selectUserId } from '../../selectors';
 import { useEffect, useState } from 'react';
 import { useServerRequest } from '../../hooks';
 import styles from './user-bookings.module.css';
@@ -8,20 +8,28 @@ import { TableRow } from './components';
 export const UserBookings = () => {
 	const [userBookings, setUserBookings] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
-
-	const userLogin = useSelector(selectUserLogin);
+	const [shouldUpdateList, setShouldUpdateList] = useState(false);
+	const userId = useSelector(selectUserId);
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
-		requestServer('fetchUserBookings', userLogin).then((userBookingsRes) => {
+		requestServer('fetchUserBookings', userId).then((userBookingsRes) => {
 			if (userBookingsRes.error) {
 				setErrorMessage(userBookingsRes.error);
 				return;
 			}
-
+			if (userBookingsRes.res.length < 1) {
+				setErrorMessage('У вас еще нет бронирований!');
+			}
 			setUserBookings(userBookingsRes.res);
 		});
-	}, [requestServer, userLogin]);
+	}, [requestServer, userId, shouldUpdateList]);
+
+	const onBookingRemove = (idOfBooking) => {
+		requestServer('removeBooking', idOfBooking).then((res) => {
+			setShouldUpdateList(!shouldUpdateList);
+		});
+	};
 
 	return (
 		<div className={styles.conteiner}>
@@ -37,15 +45,15 @@ export const UserBookings = () => {
 							<div className={styles.dateEndColumn}>Выезд</div>
 							<div className={styles.statusColumn}>Статус бронирования</div>
 						</div>
-						{userBookings.map(({ id, title, dayStart, dayEnd, status }) => (
+						{userBookings.map(({ id, roomId, title, date, status }) => (
 							<TableRow
-								key={id}
 								id={id}
+								key={id}
+								roomId={roomId}
 								title={title}
-								userLogin={userLogin}
-								dayStart={dayStart}
-								dayEnd={dayEnd}
+								date={date}
 								status={status}
+								onBookingRemove={() => onBookingRemove(id)}
 							/>
 						))}
 					</>
