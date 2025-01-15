@@ -34,6 +34,13 @@
       "password": "qwerty",
       "registred_at": "2036-08-18 19:34",
       "role_id": "1"
+    },
+    {
+      "id": "5b5e",
+      "login": "vlad",
+      "password": "qwerty",
+      "registred_at": "2047-12-16 21:22",
+      "role_id": "1"
     }
   ],
   "roles": [
@@ -215,6 +222,19 @@
         "2025-02-15"
       ],
       "status": "0"
+    },
+    {
+      "id": "a35d",
+      "title": "А-frame 4-х местный",
+      "room_id": "002",
+      "user_id": "002",
+      "user_login": "user",
+      "date": [
+        "2025-01-26",
+        "2025-01-27",
+        "2025-01-28"
+      ],
+      "status": "0"
     }
   ],
   "statuses": [
@@ -272,17 +292,6 @@
         "id": "001",
         "login": "Inna",
         "password": "12345Aa",
-        "registredAt": "2024-11-11",
-        "roleId": "0"
-      }
-    },
-    {
-      "id": "517c",
-      "hash": "0.72816679919636007056737980747129768133163452148438",
-      "user": {
-        "id": "002",
-        "login": "user",
-        "password": "qwerty",
         "registredAt": "2024-11-11",
         "roleId": "0"
       }

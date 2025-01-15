@@ -6,6 +6,7 @@ const initialRoomState = {
 	imgUrl: '',
 	content: '',
 	maxCapacity: '',
+	// price: '',
 };
 
 export const roomReducer = (state = initialRoomState, action) => {

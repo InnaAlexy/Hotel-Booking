@@ -4,24 +4,31 @@ import { useEffect, useState } from 'react';
 import { useServerRequest } from '../../hooks';
 import styles from './user-bookings.module.css';
 import { TableRow } from './components';
+import { Loader } from '../../component';
 
 export const UserBookings = () => {
 	const [userBookings, setUserBookings] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 	const [shouldUpdateList, setShouldUpdateList] = useState(false);
 	const userId = useSelector(selectUserId);
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
+		setIsLoading(true);
 		requestServer('fetchUserBookings', userId).then((userBookingsRes) => {
 			if (userBookingsRes.error) {
 				setErrorMessage(userBookingsRes.error);
+				setIsLoading(false);
 				return;
 			}
 			if (userBookingsRes.res.length < 1) {
 				setErrorMessage('У вас еще нет бронирований!');
+				setIsLoading(false);
+				return;
 			}
 			setUserBookings(userBookingsRes.res);
+			setIsLoading(false);
 		});
 	}, [requestServer, userId, shouldUpdateList]);
 
@@ -30,6 +37,10 @@ export const UserBookings = () => {
 			setShouldUpdateList(!shouldUpdateList);
 		});
 	};
+
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	return (
 		<div className={styles.conteiner}>

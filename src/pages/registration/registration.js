@@ -3,13 +3,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Button, ErrorFormMessage, Icon } from '../../component';
-import { server } from '../../bff/server';
+import { Button, ErrorFormMessage, Icon, Loader } from '../../component';
 import { setUser } from '../../actions';
 import { Navigate } from 'react-router-dom';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
-import { useFormReset } from '../../hooks';
+import { useFormReset, useServerRequest } from '../../hooks';
 import { regFormSchema } from './reg-form-schema';
 
 export const Registration = () => {
@@ -28,6 +27,8 @@ export const Registration = () => {
 	});
 
 	const [serverError, setServerError] = useState('');
+	const requestServer = useServerRequest();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const dispatch = useDispatch();
 	const roleId = useSelector(selectUserRole);
@@ -35,14 +36,17 @@ export const Registration = () => {
 	useFormReset(reset);
 
 	const onSubmit = ({ login, password }) => {
-		server.register(login, password).then(({ error, res }) => {
+		setIsLoading(true);
+		requestServer('register', login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
+				setIsLoading(false);
 				return;
 			}
 
 			dispatch(setUser(res));
 			sessionStorage.setItem('userData', JSON.stringify(res));
+			setIsLoading(false);
 		});
 	};
 
@@ -52,6 +56,10 @@ export const Registration = () => {
 
 	if (roleId !== ROLE.VIEWER) {
 		return <Navigate to="/" />;
+	}
+
+	if (isLoading) {
+		return <Loader />;
 	}
 
 	return (

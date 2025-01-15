@@ -3,14 +3,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import styles from './authorization.module.css';
-import { Button, ErrorFormMessage, Icon } from '../../component';
-import { server } from '../../bff/server';
+import { Button, ErrorFormMessage, Icon, Loader } from '../../component';
 import { setUser } from '../../actions';
 import { Link, Navigate } from 'react-router-dom';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
 import { authFormSchema } from './auth-form-schema';
-import { useFormReset } from '../../hooks';
+import { useFormReset, useServerRequest } from '../../hooks';
 
 export const Authorization = () => {
 	const {
@@ -27,6 +26,8 @@ export const Authorization = () => {
 	});
 
 	const [serverError, setServerError] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
+	const requestServer = useServerRequest();
 
 	const dispatch = useDispatch();
 	const roleId = useSelector(selectUserRole);
@@ -34,14 +35,17 @@ export const Authorization = () => {
 	useFormReset(reset);
 
 	const onSubmit = ({ login, password }) => {
-		server.authorize(login, password).then(({ error, res }) => {
+		setIsLoading(true);
+		requestServer('authorize', login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
+				setIsLoading(false);
 				return;
 			}
 
 			dispatch(setUser(res));
 			sessionStorage.setItem('userData', JSON.stringify(res));
+			setIsLoading(false);
 		});
 	};
 
@@ -50,6 +54,10 @@ export const Authorization = () => {
 
 	if (roleId !== ROLE.VIEWER) {
 		return <Navigate to="/" />;
+	}
+
+	if (isLoading) {
+		return <Loader />;
 	}
 
 	return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from '../../../../component';
+import { Button, Loader } from '../../../../component';
 import styles from './booking-block.module.css';
 import { useServerRequest } from '../../../../hooks';
 import { Confirm, Error } from './components';
@@ -12,6 +12,7 @@ export const BookingBlock = ({ actualRoomId }) => {
 	const [toutched, setToutched] = useState(false);
 	const [alreadyBusyDates, setAlreadyBusyDates] = useState([]);
 	const [desiredDates, setDesiredDates] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const requestServer = useServerRequest();
 
@@ -33,6 +34,7 @@ export const BookingBlock = ({ actualRoomId }) => {
 	};
 
 	const onBookingCheck = (startDay, endDay, busyDates) => {
+		setIsLoading(true);
 		const dateStart = Date.parse(startDay);
 		const dateEnd = Date.parse(endDay);
 		let daysArr = [];
@@ -46,7 +48,12 @@ export const BookingBlock = ({ actualRoomId }) => {
 		setIsDateBusy(checkingRes.includes(true));
 		setToutched(true);
 		setDesiredDates(daysArr);
+		setIsLoading(false);
 	};
+
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	return (
 		<>

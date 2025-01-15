@@ -25,7 +25,6 @@ function App() {
 		if (!currentUserDataJSON) {
 			return;
 		}
-
 		const currentUserData = JSON.parse(currentUserDataJSON);
 
 		dispatch(setUser(currentUserData));
@@ -45,10 +44,6 @@ function App() {
 						<Route path="/rooms" element={<Rooms />}></Route>
 						<Route path="/rooms/:roomId" element={<Room />}></Route>
 						<Route path="/myBooking" element={<UserBookings />}></Route>
-						<Route
-							path="/bookingPage"
-							element={<div>cтр бронирования</div>}
-						></Route>
 						<Route path="*" element={<Error404 />}></Route>
 					</Routes>
 				</div>

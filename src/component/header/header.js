@@ -18,6 +18,7 @@ export const Header = () => {
 	const onLogout = () => {
 		dispatch(logout(session));
 		sessionStorage.removeItem('userData');
+		navigate('/login');
 	};
 
 	return (
