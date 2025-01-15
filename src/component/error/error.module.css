@@ -3,13 +3,13 @@
 	align-items: center;
 	flex-direction: column;
 	margin: auto;
-	padding-top: 30px;
+	padding-top: 60px;
 	font-size: 25px;
 	color: #51656a;
 }
 
 h1 {
-	font-size: 150px;
+	font-size: 100px;
 	margin: 0;
 	text-shadow: 5px 5px #3c3d3b;
 }

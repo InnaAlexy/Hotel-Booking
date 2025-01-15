@@ -1,14 +1,15 @@
 import { getBookings } from '../api';
-import { ROLE } from '../constants';
+import { ERROR, ROLE } from '../constants';
 import { sessions } from '../sessions';
 
 export const fetchBookings = async (hash) => {
 	const accessRoles = [ROLE.ADMIN];
 
 	const access = await sessions.access(hash, accessRoles);
+
 	if (!access) {
 		return {
-			error: 'Доступ запрещен',
+			error: ERROR.ACCESS_ERROR,
 			res: null,
 		};
 	}

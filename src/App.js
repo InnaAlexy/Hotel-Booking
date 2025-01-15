@@ -1,10 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Footer, Header } from './component';
+import { Error, Footer, Header } from './component';
 import {
 	AboutUs,
 	Authorization,
 	Bookings,
-	Error404,
 	Main,
 	Registration,
 	Room,
@@ -44,7 +43,7 @@ function App() {
 						<Route path="/rooms" element={<Rooms />}></Route>
 						<Route path="/rooms/:roomId" element={<Room />}></Route>
 						<Route path="/myBooking" element={<UserBookings />}></Route>
-						<Route path="*" element={<Error404 />}></Route>
+						<Route path="*" element={<Error />}></Route>
 					</Routes>
 				</div>
 				<Footer />

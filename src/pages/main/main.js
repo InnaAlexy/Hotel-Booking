@@ -21,26 +21,18 @@ export const Main = () => {
 				<Logo />
 			</div>
 			<div>
-				{userRole === ROLE.VIEWER ? (
+				<div className={styles.buttonArea}>
 					<div>
 						<Link to="/aboutUs">
 							<Button>Информация о нас</Button>
 						</Link>
 					</div>
-				) : (
-					<div className={styles.buttonArea}>
-						<div>
-							<Link to="/aboutUs">
-								<Button>Информация о нас</Button>
-							</Link>
-						</div>
-						<div>
-							<Link to="/rooms">
-								<Button>Список номеров</Button>
-							</Link>
-						</div>
+					<div>
+						<Link to="/rooms">
+							<Button>Список номеров</Button>
+						</Link>
 					</div>
-				)}
+				</div>
 			</div>
 		</div>
 	);

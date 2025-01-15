@@ -1,24 +1,34 @@
 import { useSelector } from 'react-redux';
-import { selectUserId } from '../../selectors';
+import { selectUserId, selectUserRole } from '../../selectors';
 import { useEffect, useState } from 'react';
 import { useServerRequest } from '../../hooks';
 import styles from './user-bookings.module.css';
 import { TableRow } from './components';
-import { Loader } from '../../component';
+import { Error, Loader } from '../../component';
+import { checkAccess } from '../../utils';
+import { ERROR, ROLE } from '../../constants';
 
 export const UserBookings = () => {
 	const [userBookings, setUserBookings] = useState([]);
-	const [errorMessage, setErrorMessage] = useState(null);
+	const [error, setError] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [shouldUpdateList, setShouldUpdateList] = useState(false);
+	const userRole = useSelector(selectUserRole);
 	const userId = useSelector(selectUserId);
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
 		setIsLoading(true);
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			setError(ERROR.ACCESS_ERROR);
+			setIsLoading(false);
+
+			return;
+		}
 		requestServer('fetchUserBookings', userId).then((userBookingsRes) => {
 			if (userBookingsRes.error) {
-				setErrorMessage(userBookingsRes.error);
+				setError(userBookingsRes.error);
 				setIsLoading(false);
 				return;
 			}
@@ -30,7 +40,7 @@ export const UserBookings = () => {
 			setUserBookings(userBookingsRes.res);
 			setIsLoading(false);
 		});
-	}, [requestServer, userId, shouldUpdateList]);
+	}, [requestServer, userId, shouldUpdateList, userRole]);
 
 	const onBookingRemove = (idOfBooking) => {
 		requestServer('removeBooking', idOfBooking).then((res) => {
@@ -42,7 +52,9 @@ export const UserBookings = () => {
 		return <Loader />;
 	}
 
-	return (
+	return error ? (
+		<Error error={error} />
+	) : (
 		<div className={styles.conteiner}>
 			<h2>Мои бронирования</h2>
 			<div className={styles.tableConteiner}>

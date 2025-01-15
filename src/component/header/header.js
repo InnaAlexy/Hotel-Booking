@@ -15,6 +15,9 @@ export const Header = () => {
 	const login = useSelector(selectUserLogin);
 	const session = useSelector(selectUserSession);
 
+	const isAdmin = roleId === ROLE.ADMIN;
+	console.log(roleId, 'role');
+
 	const onLogout = () => {
 		dispatch(logout(session));
 		sessionStorage.removeItem('userData');
@@ -49,9 +52,11 @@ export const Header = () => {
 								<Link to="/myBooking">
 									<Icon id="fa-heart-o" />
 								</Link>
-								<Link to="/bookings">
-									<Icon id="fa-list-ol" />
-								</Link>
+								{isAdmin && (
+									<Link to="/bookings">
+										<Icon id="fa-list-ol" />
+									</Link>
+								)}
 
 								<Icon id="fa-user-circle" />
 								<div className={styles.login}>{login}</div>

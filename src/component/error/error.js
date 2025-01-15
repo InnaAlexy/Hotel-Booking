@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-import styles from './error404.module.css';
+import styles from './error.module.css';
+import { ERROR } from '../../constants';
 
-export const Error404 = () => {
+export const Error = ({ error }) => {
 	return (
 		<div className={styles.conteiner}>
-			<h1>404</h1>
+			<h1>Ошибка</h1>
 			<div className={styles.errorMessage}>
-				<div>К сожалению, страница не найдена, </div>
+				<div>{error ? error : ERROR.PAGE_NOT_FOUND}, </div>
 				<div>
 					вернитесь назад или перейдите <Link to="/">на главную</Link>!
 				</div>

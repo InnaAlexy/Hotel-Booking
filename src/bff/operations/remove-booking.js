@@ -1,5 +1,5 @@
 import { deleteBooking } from '../api';
-import { ROLE } from '../constants';
+import { ERROR, ROLE } from '../constants';
 import { sessions } from '../sessions';
 
 export const removeBooking = async (hash, idOfBooking) => {
@@ -8,7 +8,7 @@ export const removeBooking = async (hash, idOfBooking) => {
 	const access = await sessions.access(hash, accessRoles);
 	if (!access) {
 		return {
-			error: 'Доступ запрещен',
+			error: ERROR.ACCESS_ERROR,
 			res: null,
 		};
 	}

@@ -1,5 +1,5 @@
 import { addBooking } from '../api';
-import { ROLE } from '../constants';
+import { ERROR, ROLE } from '../constants';
 import { sessions } from '../sessions';
 
 export const booking = async (hash, room, userId, userLogin, desiredDates) => {
@@ -8,7 +8,7 @@ export const booking = async (hash, room, userId, userLogin, desiredDates) => {
 	const access = await sessions.access(hash, accessRoles);
 	if (!access) {
 		return {
-			error: 'Доступно только зарегистрированным пользователям! Пожалуйта, зарегистрируйтесь!',
+			error: ERROR.ACCESS_ERROR,
 			res: null,
 		};
 	}
@@ -17,7 +17,7 @@ export const booking = async (hash, room, userId, userLogin, desiredDates) => {
 
 	if (!newBooking) {
 		return {
-			error: 'Что-то пошло не так, попробуйте еще раз!',
+			error: ERROR.OTHER,
 			res: null,
 		};
 	}
